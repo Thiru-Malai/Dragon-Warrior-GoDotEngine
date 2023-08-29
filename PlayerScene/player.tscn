@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://8os1yksv4p8w"]
+
+[ext_resource type="PackedScene" uid="uid://ba4v41hicn385" path="res://animated_sprite_2d.tscn" id="1_d6oe4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhihi"]
+radius = 12.0
+height = 56.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_d6oe4")]
+position = Vector2(-3, -33)
+scale = Vector2(0.8, 0.8)
+animation = &"idle"
+frame_progress = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_dhihi")
