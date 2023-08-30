@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://ouk7eout7ctv"]
+
+[ext_resource type="Texture2D" uid="uid://dssprkn04omc4" path="res://Objects/coins/BIG_0000_Capa-1.png" id="1_4w54t"]
+[ext_resource type="Texture2D" uid="uid://cai4onx50aliq" path="res://Objects/coins/BIG_0001_Capa-2.png" id="2_78ix2"]
+[ext_resource type="Texture2D" uid="uid://csmk3qphaut8v" path="res://Objects/coins/BIG_0002_Capa-3.png" id="3_tcjc1"]
+[ext_resource type="Texture2D" uid="uid://ca4sqf7wc15ce" path="res://Objects/coins/BIG_0003_Capa-4.png" id="4_1jr3j"]
+[ext_resource type="Texture2D" uid="uid://c1t7ujm0omref" path="res://Objects/coins/BIG_0004_Capa-5.png" id="5_lk0rx"]
+[ext_resource type="Texture2D" uid="uid://cn16ksffxe531" path="res://Objects/coins/BIG_0005_Capa-6.png" id="6_svbt8"]
+[ext_resource type="Texture2D" uid="uid://c2iyxncee5dva" path="res://Objects/coins/BIG_0006_Capa-7.png" id="7_olrn4"]
+[ext_resource type="Texture2D" uid="uid://c3ni0e6s44cbi" path="res://Objects/coins/BIG_0007_Capa-8.png" id="8_4e3fv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gn1dn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4w54t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_78ix2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tcjc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1jr3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lk0rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_svbt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_olrn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4e3fv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awt7r"]
+radius = 15.0333
+
+[node name="Coin" type="Area2D"]
+position = Vector2(336, 241)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_gn1dn")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_awt7r")
