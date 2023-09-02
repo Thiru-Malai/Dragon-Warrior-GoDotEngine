@@ -13,6 +13,7 @@ var has_double_jumped : bool = false
 var animation_locked : bool = false
 var direction : Vector2 = Vector2.ZERO
 var was_in_air : bool = false
+var attacked : bool = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -25,6 +26,13 @@ func _physics_process(delta):
 			land()
 		was_in_air = false 
 
+
+	# Handle Attack
+#	if Input.is_action_just_pressed("attack"):
+#		if attacked == false:
+#			animation_locked = true
+#			animated_sprite.play("attack")
+#			attacked = true
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
@@ -67,6 +75,10 @@ func jump():
 func land():
 	animated_sprite.play("idle")
 	animation_locked = false
+	
+func attack():
+	animated_sprite.play("attack")
+	animation_locked = false
 
 
 func _on_animated_sprite_2d_animation_finished():
@@ -75,3 +87,8 @@ func _on_animated_sprite_2d_animation_finished():
 		
 func GetCoin():
 	Global.coins+=1
+	
+func die():
+	Global.coins = 0
+	animated_sprite.play("finished")
+	get_tree().reload_current_scene()

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://crbt5oxx4drkd"]
+
+[ext_resource type="Script" path="res://Prefabs/spike.gd" id="1_01r4h"]
+[ext_resource type="Texture2D" uid="uid://b2koyunmbl2va" path="res://Tiles/Medieval_tiles_free2.png" id="1_snm3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dreh"]
+size = Vector2(40, 10)
+
+[node name="spike" type="Area2D"]
+script = ExtResource("1_01r4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_1dreh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_snm3j")
+region_enabled = true
+region_rect = Rect2(592, 432, 48, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
