@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cc2u6eq24me20"]
+[gd_scene load_steps=47 format=3 uid="uid://cc2u6eq24me20"]
 
 [ext_resource type="Texture2D" uid="uid://v0adehxco2pb" path="res://Background/2.png" id="1_lr876"]
 [ext_resource type="Texture2D" uid="uid://0xeyvcdd8a8p" path="res://Levels/door1.png" id="2_j2pey"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://bk6v64f8d5eug" path="res://Prefabs/enemy.tscn" id="23_tjspb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qjvus"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ft0p0"]
+size = Vector2(33, 40)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1da85"]
 texture = ExtResource("4_5b3i1")
@@ -4667,6 +4670,12 @@ texture = ExtResource("1_lr876")
 position = Vector2(2943, 297)
 texture = ExtResource("2_j2pey")
 
+[node name="Area2D" type="Area2D" parent="End"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End/Area2D"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_ft0p0")
+
 [node name="Start" type="Sprite2D" parent="."]
 position = Vector2(-30, 292)
 texture = ExtResource("3_f4yq4")
@@ -4767,6 +4776,7 @@ position = Vector2(2704, 265)
 [node name="enemy" parent="." instance=ExtResource("23_tjspb")]
 position = Vector2(1765, 285)
 
+[connection signal="body_entered" from="End/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Coin4" to="Coin4" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Coin3" to="Coin3" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Coin2" to="Coin2" method="_on_body_entered" flags=18]

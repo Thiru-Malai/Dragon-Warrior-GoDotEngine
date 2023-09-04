@@ -90,5 +90,8 @@ func GetCoin():
 	
 func die():
 	Global.coins = 0
-	animated_sprite.play("finished")
 	get_tree().reload_current_scene()
+
+
+func _on_area_2d_body_entered(body):
+	get_tree().change_scene_to_file("res://Prefabs/main_menu.tscn")
